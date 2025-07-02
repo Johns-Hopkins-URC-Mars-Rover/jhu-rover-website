@@ -5,7 +5,7 @@ by Ethan Oh, 7/01/2025
 ## How was this website made?
 
 This website was built with 5 main tools:
-1. [Astro](https://astro.build/) - a static website generator JavaScript framework that allows you to easily edit website content through the use of [Markdown](https://www.markdownguide.org/) (.md) files and React layouts/components (--this website uses [Preact](https://preactjs.com/), though!)
+1. [Astro](https://astro.build/) - a static website generator JavaScript framework that allows you to easily edit website content through the use of [Markdown](https://www.markdownguide.org/) (.md) files, Astro layouts/components, and dynamic React components (--this website uses [Preact](https://preactjs.com/), though!)
 2. [TailwindCSS](https://tailwindcss.com/) - a fast, lightweight CSS framework that allows for quick-and-easy style changes and aesthetic improvements
 3. [DaisyUI](https://daisyui.com/) - an extension of TailwindCSS that essentially acts as a UI component library, great for building websites quickly and aesthetically
 4. [PagesCMS](https://pagescms.org/) - an open-source, online Content Management System (CMS) that allows users to easily modify the content in the website Markdown files with a user-friendly Graphical User Interface (GUI) without interacting with the code
