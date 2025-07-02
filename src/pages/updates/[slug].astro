@@ -1,0 +1,22 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content';
+import UpdateEntry from '../../layouts/UpdateEntry.astro';
+import { render } from 'astro:content';
+import type { ACTION_ERROR_CODES } from 'astro:actions';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('updates');
+	return posts.map((entry) => ({
+		params: { slug: entry.id },
+		props: entry,
+	}));
+}
+type Props = CollectionEntry<'updates'>;
+
+const entry = Astro.props;
+const { Content } = await render(entry);
+---
+
+<UpdateEntry {...entry.data}>
+	<Content />
+</UpdateEntry>

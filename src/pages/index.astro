@@ -1,0 +1,63 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import GeneralContent from "../layouts/GeneralContent.astro";
+import headshot from '../assets/mrt_logo.png';
+import bgImage from '../assets/rovergroup1.jpg'
+const page_title = "rover @ jhu";
+
+import { getEntry, render } from 'astro:content';
+const entry = await getEntry('general', 'home');
+
+if (!entry) {
+  throw new Error('Could not find "home" content');
+}
+const { Content, headings, remarkPluginFrontmatter } = await render(entry);
+---
+
+<BaseLayout page_title={page_title}>
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .animate-fadeIn {
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+
+  </style>
+  <div
+    class="hero min-h-screen"
+    style=`background-image: url(${bgImage.src});`
+  >
+    <div class="hero-overlay"></div>
+    <div class="hero-content flex flex-col items-center justify-center text-neutral-content text-center">
+      <img
+          class="flex w-75 h-75 animate-fadeIn"
+          src={headshot.src}
+        />
+      <div class="max-w-md">
+        <div class="opacity-0 animate-fadeIn"
+          style="animation-delay: 1500ms;">
+          <h1 class="pt-10 mb-5 text-5xl font-bold text-shadow-lg/50 text-shadow-primary">
+            HOPKINAUTS
+          </h1>
+          <p class="text-2xl mb-5 text-shadow-lg/50 text-shadow-primary">
+            the Mars Rover Team
+          </p>
+          <p class="mb-5 italic text-xl text-shadow-lg/50 text-shadow-primary">
+            @ Johns Hopkins University
+            <!-- an engineer committed to building solutions to advance human wellfare. -->
+          </p>
+          <a href="#content"><div class="animate-bounce translate-y-5">
+            <span class="indicator-item indicator-bottom indicator-center badge py-4 text-xl shadow-lg/50 shadow-base-100">↓</span>
+          </div></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <GeneralContent>
+		<Content />
+  </GeneralContent>
+  
+</BaseLayout>

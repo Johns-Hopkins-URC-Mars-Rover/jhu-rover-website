@@ -1,0 +1,23 @@
+---
+const page_title = "contact | rover @ jhu";
+const active_nav = "contact";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import GeneralContent from "../layouts/GeneralContent.astro";
+
+import { getEntry, render } from 'astro:content';
+const entry = await getEntry('general', 'contact');
+
+if (!entry) {
+   // Handle Error, for example:
+  throw new Error('Could not find "contact" content');
+}
+const { Content, headings, remarkPluginFrontmatter } = await render(entry);
+---
+<BaseLayout page_title={page_title} active_nav={active_nav}>
+	<GeneralContent>
+			<h1 class="underline decoration-primary py-5" style="text-align: center;">
+				contact
+			</h1>
+			<Content />
+	</GeneralContent>
+</BaseLayout>

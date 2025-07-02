@@ -1,0 +1,30 @@
+---
+import "../styles/global.css";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { Image } from "astro:assets";
+const { page_title, active_nav } = Astro.props;
+import { DARK_THEME } from '../consts'
+---
+
+<html lang="en" class="scroll-smooth">
+  <head>
+    <!-- load theme immediately, before painting elements -->
+    <script is:inline>
+      (function () {
+        try {
+          const theme = localStorage.getItem("theme") || DARK_THEME;
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {}
+      })();
+    </script>
+    <BaseHead page_title={page_title} />
+  </head>
+  
+  <body>
+    <Header active_nav={active_nav} />
+    <slot/>
+    <Footer />
+  </body>
+</html>

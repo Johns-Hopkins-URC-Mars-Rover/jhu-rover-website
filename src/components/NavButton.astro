@@ -1,0 +1,8 @@
+---
+const { href, active } = Astro.props;
+---
+<li class="h-full">
+  <a href={`${href}`} class={`btn btn-lg btn-ghost rounded-none h-20 ${active ? 'underline' : ''}`}>
+    <slot />
+  </a>
+</li>

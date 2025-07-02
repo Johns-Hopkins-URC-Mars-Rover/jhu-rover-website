@@ -1,0 +1,65 @@
+---
+import ThemeToggle from '../components/ThemeToggle.jsx';
+import NavButton from '../components/NavButton.astro'
+import { NAV_ELEMS, LINKS } from '../consts'
+const { active_nav } = Astro.props;
+---
+<div class="navbar bg-base-100 shadow-sm px-0 py-0 h-full">
+  <div class="navbar-start">
+    <!-- Dropdown for smaller screens -->
+    <div class="dropdown">
+      <div tabindex="0" role="button" class="lg:hidden px-4">
+        <label class="btn btn-circle btn-ghost">
+          <!-- hamburger icon -->
+          <svg
+            class="fill-current"
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h7"></path>
+          </svg>
+        </label>
+      </div>
+      <ul
+        tabindex="0"
+        class="menu menu-sm dropdown-content bg-base-100 box z-1 w-52 shadow"
+      >
+        {
+          NAV_ELEMS.map((elem) => (
+          <NavButton 
+            href={LINKS.find(link => link.label === elem)?.path ?? '/'}
+            active={elem.toLowerCase() === active_nav}>
+            {elem}
+          </NavButton>
+          ))
+        }
+      </ul>
+    </div>
+    <a href='/' class="btn btn-ghost btn-secondary text-xl rounded-none h-20">
+      rover @ jhu
+    </a>
+  </div>
+  <!-- Normal for larger screens -->
+  <div class="navbar-center hidden lg:flex h-full">
+    <ul class="menu menu-horizontal h-20 p-0">
+      {
+        NAV_ELEMS.map((elem) => (
+        <NavButton 
+            href={LINKS.find(link => link.label === elem)?.path ?? '/'}
+            active={elem.toLowerCase() === active_nav}>
+            {elem}
+          </NavButton>
+        ))
+      }
+    </ul>
+  </div>
+  <div class="navbar-end px-4">
+    <ThemeToggle client:load />
+  </div>
+</div>

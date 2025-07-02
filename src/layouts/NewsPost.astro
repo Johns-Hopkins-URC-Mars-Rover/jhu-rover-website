@@ -1,0 +1,45 @@
+---
+import type { CollectionEntry } from "astro:content";
+import FormattedDate from '../components/FormattedDate.astro';
+import Menu from '../components/Menu.astro'
+import BaseLayout from './BaseLayout.astro';
+
+const active_nav = "news";
+type Props = CollectionEntry<"news">["data"];
+
+const { title, thumbnail, description, date } = Astro.props;
+---
+
+<BaseLayout page_title={title} active_nav={active_nav}>
+  <div class="content">
+    <!-- Menu -->
+    <Menu back_href='/news/'/>
+    <!-- Content -->
+    <main>
+      <article>
+        <div class="hero-image">
+          {thumbnail 
+            ? <img src={thumbnail.src} class='max-w-full w-auto max-h-50vh mx-auto' alt="" /> 
+            : <div class="skeleton max-w-full w-auto h-100 max-h-50vh mx-auto"></div>}
+        </div>
+        <div class="prose py-10 leading-8">
+          <div class="title">
+            <div class="date">
+              <FormattedDate date={date} />
+              {
+                date && (
+                  <div class="last-updated-on">
+                    Last updated on <FormattedDate date={date} />
+                  </div>
+                )
+              }
+            </div>
+            <h1>{title}</h1>
+            <hr />
+          </div>
+          <slot />
+        </div>
+      </article>
+    </main>
+  </div>
+</BaseLayout>

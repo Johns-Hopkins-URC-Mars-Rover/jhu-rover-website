@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from "astro:content";
+const page_title = "news | rover @ jhu";
+const active_nav = 'news'
+const posts = await getCollection("news");
+---
+<BaseLayout page_title={page_title} active_nav={active_nav}>
+  <main>
+    <h1 class='underline decoration-primary py-5' style="text-align: center;">news</h1>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-10 px-4">
+      {posts.map(post => (
+        <a 
+          class="card bg-primary w-full shadow-sm col-span-1 
+            transition-transform duration-200 ease-in-out hover:scale-105 
+            hover:cursor-pointer"
+          href={`/news/${post.id}`}>
+          <figure>
+            {post.data.thumbnail
+              ? <img src={post.data.thumbnail.src}/>
+              : <div class="skeleton w-full h-full"></div>
+            }
+          </figure>
+          <div class="card-body">
+            <p class="card-title text-3xl">{post.data.title}</p>
+            <p>{post.data.description}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </main>
+</BaseLayout>
