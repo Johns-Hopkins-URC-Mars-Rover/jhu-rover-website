@@ -1,24 +1,24 @@
 const perseverance = [
     { name: 'CubeMars', 
-        img: '../../public/assets/sponsors/cube_mars.jpg', 
+        img: '/assets/sponsors/cube_mars.jpg', 
         url: 'https://google.com' },
     { name: 'JHU Alumni Association', 
-        img: '../../public/assets/sponsors/jhu_alum.jpeg', 
+        img: '/assets/sponsors/jhu_alum.jpeg', 
         url: 'https://amazon.com' },
     { name: 'Mouser Electronics', 
-        img: '../../public/assets/sponsors/mouser.png', 
+        img: '/assets/sponsors/mouser.png', 
         url: 'https://linkedin.com' },
 ]
 
 const curiosity = [
     { name: 'JHU Alumni Association', 
-        img: '../../public/assets/sponsors/jhu_alum.jpeg', 
+        img: '/assets/sponsors/jhu_alum.jpeg', 
         url: 'https://amazon.com' },
 ]
 
 const spirit = [
     { name: 'Mouser Electronics', 
-        img: '../../public/assets/sponsors/mouser.png', 
+        img: '/assets/sponsors/mouser.png', 
         url: 'https://linkedin.com' },
 ]
 
