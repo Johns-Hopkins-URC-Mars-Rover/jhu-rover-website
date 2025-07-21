@@ -4,7 +4,7 @@ thumbnail: ../../../public/assets/thumbnails/placeholder.gif
 date: 2025-06-30
 location: Baltimore, MD
 description: inception
-draft: false
+draft: true
 ---
 ## mars rover team inception
 

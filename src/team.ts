@@ -1,0 +1,17 @@
+export const SUBTEAMS = [
+    { label: 'mech', 
+        name: 'Mechanical Subteam', 
+        img: '../../public/assets/subteams/mechanical.jpeg'},
+    { label: 'elec', 
+        name: 'Electrical Subteam', 
+        img: '../../public/assets/subteams/electrical.png'},
+    { label: 'software', 
+        name: 'Software Subteam', 
+        img: '../../public/assets/subteams/software.png'},
+    { label: 'biochem', 
+        name: 'Biochemical Subteam', 
+        img: '../../public/assets/subteams/biochem.jpeg'},
+    { label: 'business', 
+        name: 'Business Subteam', 
+        img: '../../public/assets/subteams/business.jpeg'},
+]

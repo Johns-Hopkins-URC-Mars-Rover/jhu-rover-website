@@ -1,10 +1,10 @@
 ---
 title: First post
 thumbnail: ../../../public/assets/thumbnails/placeholder.gif
-date: 2025-06-30
+date: 2025-07-30
 location: Baltimore
 description: Lorem ipsum dolor sit amet
-draft: false
+draft: true
 ---
 Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.
 

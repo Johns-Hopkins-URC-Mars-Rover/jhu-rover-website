@@ -3,7 +3,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import GeneralContent from "../layouts/GeneralContent.astro";
 import headshot from '../assets/mrt_logo.png';
 import bgImage from '../assets/rovergroup1.jpg'
+import Stats from "../components/Stats.astro"
 const page_title = "rover @ jhu";
+
+import { SUBTEAMS } from '../team'
 
 import { getEntry, render } from 'astro:content';
 const entry = await getEntry('general', 'home');
@@ -56,7 +59,46 @@ const { Content, headings, remarkPluginFrontmatter } = await render(entry);
       </div>
     </div>
   </div>
+  <div class="flex flex-row flex-wrap justify-center py-10">
+    <Stats/>
+  </div>
+  <div class="flex flex-row flex-wrap justify-center py-5 gap-10">
+    <a href="contact"><button class="btn btn-xl btn-accent">Join the Team</button></a
+    >
+    <a href="sponsor"><button class="btn btn-xl btn-accent">Sponsor the Rover</button></a
+    >
+  </div>
   <GeneralContent>
+    <div class="hero">
+      <div class="hero-content flex-col lg:flex-row gap-10">
+        <div class="max-w-[35vw]">
+          <h2 class="underline decoration-primary py-5">Our Mission</h2>
+          <p>The mission of the Hopkinauts Mars Rover Team is to design
+             and build a Mars rover, a space vehicle suited to traverse 
+             across Mars' terrain, collect soil samples, conduct tasks 
+             using a robotic arm, and more. The team will offer practical 
+             engineering and science education and soft skills to 
+             students at Johns Hopkins University.</p>
+        </div>
+        <div
+          class="w-full flex flex-row gap-5 items-center justify-center flex-wrap"
+        >
+        {
+          SUBTEAMS &&
+          SUBTEAMS.map( (team) => (
+            <a href={`#${team.label}`}>
+              <figure class="max-w-[150px] tooltip"
+              data-tip={team.name}>
+                <img src={team.img}
+                  style="border-radius: 2em;"/>
+              </figure>
+            </a>
+          ))
+        }
+        </div>
+      </div>
+    </div>
+
 		<Content />
   </GeneralContent>
   

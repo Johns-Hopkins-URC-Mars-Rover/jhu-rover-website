@@ -3,6 +3,7 @@ const page_title = "contact | rover @ jhu";
 const active_nav = "contact";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import GeneralContent from "../layouts/GeneralContent.astro";
+import image from "../assets/contact.jpg"
 
 import { getEntry, render } from 'astro:content';
 const entry = await getEntry('general', 'contact');
@@ -18,6 +19,14 @@ const { Content, headings, remarkPluginFrontmatter } = await render(entry);
 			<h1 class="underline decoration-primary py-5" style="text-align: center;">
 				contact
 			</h1>
-			<Content />
+			<div class="hero">
+				<div class="hero-content flex-col lg:flex-row gap-10">
+				  <img src={image.src}
+				  	style="border-radius: 2em;"/>
+					<div>
+					<Content/>
+				  </div>
+				</div>
+			  </div>
 	</GeneralContent>
 </BaseLayout>

@@ -1,0 +1,147 @@
+---
+const page_title = "sponsor | rover @ jhu";
+const active_nav = "sponsor";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import GeneralContent from "../layouts/GeneralContent.astro";
+import hero from "../../public/assets/cycloidal_open.png";
+import { SPONSORS } from '../sponsors'
+
+const perseveranceTier = SPONSORS.find(tier => tier.type === 'perseverance');
+const curiosityTier = SPONSORS.find(tier => tier.type === 'curiosity');
+const spiritTier = SPONSORS.find(tier => tier.type === 'spirit');
+
+const perseverance = perseveranceTier?.sponsors ?? [];
+const curiosity = curiosityTier?.sponsors ?? [];
+const spirit = spiritTier?.sponsors ?? [];
+
+import { getEntry, render } from "astro:content";
+const blurbEntry = await getEntry("general", "sponsor_blurb");
+if (!blurbEntry) {
+  // Handle Error, for example:
+  throw new Error('Could not find "blurb" content');
+}
+const blurb = await render(blurbEntry);
+
+const thanksEntry = await getEntry("general", "sponsor_thanks");
+if (!thanksEntry) {
+  // Handle Error, for example:
+  throw new Error('Could not find "thanks" content');
+}
+const thanks = await render(thanksEntry);
+---
+
+<BaseLayout page_title={page_title} active_nav={active_nav}>
+  <GeneralContent>
+    <dialog id="sponsor_us" class="modal">
+      <div class="modal-box">
+        <h3 class="text-lg font-bold">Thank you!</h3>
+        <p class="py-4">Please view our 
+          <a target="_blank" href="../../public/assets/sponsor_packet.pdf">
+            sponsor package
+          </a>
+          and 
+          <a href="mailto:hopkinsmarsrover@gmail.com">
+            shoot us an email!
+          </a>
+        </p>
+        <div class="modal-action">
+          <form method="dialog">
+            <!-- if there is a button in form, it will close the modal -->
+            <button class="btn">Close</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+    <h1 class="underline decoration-primary py-5" style="text-align: center;">
+      sponsor us
+    </h1>
+    <div class="hero">
+      <div class="hero-content flex-col lg:flex-row gap-10">
+        <img src={hero.src} class="mask mask-squircle max-w-sm w-xs" />
+        <div>
+          <blurb.Content />
+          <div
+            class="w-full flex flex-row gap-5 items-center justify-center flex-wrap"
+          >
+            <a target="_blank" href="../../public/assets/sponsor_packet.pdf"
+              ><button class="btn btn-accent">View Sponsor Package</button></a
+            >
+            <button class="btn btn-accent" onclick="sponsor_us.showModal()"
+              >Sponsor Us!</button
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="divider divider-secondary">
+      <a class="indicator" href="#sponsors">
+        <span
+          class="animate-pulse indicator-item indicator-bottom indicator-center badge bg-accent text-lg"
+          >↓</span
+        >
+      </a>
+    </div>
+    <div id="sponsors">
+      <h1
+        class="underline decoration-secondary py-5"
+        style="text-align: center;"
+      >
+        current sponsors
+      </h1>
+      <div style="text-align: center;"><thanks.Content /></div>
+      <h3> <span class="underline decoration-accent py-5 text-shadow-xs/80">
+        <span class="text-amber-300">perseverance</span> tier</span>
+         -  { perseveranceTier?.amount }
+      </h3>
+      <div class="py-5 flex flex-row flex-wrap gap-5 justify-center">
+        { perseverance && 
+          perseverance.map((sponsor) => (
+            <a href={sponsor.url} target="_blank" class="tooltip tooltip-bottom" data-tip={sponsor.name}>
+            <img
+              src={sponsor.img}
+              alt={sponsor.name}
+              class="w-full h-auto object-contain hover:scale-105 transition-transform"
+              style="border-radius: 2em; max-width: 30vw; max-height: 30vh;"
+            />
+          </a>
+          ))
+        }
+      </div>
+      <h3> <span class="underline decoration-accent py-5 text-shadow-xs/80">
+        <span class="text-gray-400">curiosity</span> tier</span>
+        -  { curiosityTier?.amount }
+      </h3>
+      <div class="py-5 flex flex-row flex-wrap gap-5 justify-center">
+        { curiosity && 
+          curiosity.map((sponsor) => (
+            <a href={sponsor.url} target="_blank" class="tooltip tooltip-bottom" data-tip={sponsor.name}>
+            <img
+              src={sponsor.img}
+              alt={sponsor.name}
+              class="w-full h-auto object-contain hover:scale-105 transition-transform"
+              style="border-radius: 2em; max-width: 30vw; max-height: 30vh;"
+            />
+          </a>
+          ))
+        }
+      </div>
+      <h3> <span class="underline decoration-accent py-5 text-shadow-xs/80">
+        <span class="text-orange-700">spirit</span> tier</span>
+      </h3>
+      <div class="py-5 flex flex-row flex-wrap gap-5 justify-center">
+        { spirit && 
+          spirit.map((sponsor) => (
+            <a href={sponsor.url} target="_blank" class="tooltip tooltip-bottom" data-tip={sponsor.name}>
+            <img
+              src={sponsor.img}
+              alt={sponsor.name}
+              class="w-full h-auto object-contain hover:scale-105 transition-transform"
+              style="border-radius: 2em; max-width: 30vw; max-height: 30vh;"
+            />
+          </a>
+          ))
+        }
+      </div>
+    </div>
+  </GeneralContent>
+</BaseLayout>

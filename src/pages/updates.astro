@@ -3,7 +3,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from "astro:content";
 const page_title = "updates | rover @ jhu";
 const active_nav = 'rover'
-const entries = await getCollection("updates");
+const entries_unsorted = await getCollection("updates", ({data}) => {
+  return import.meta.env.PROD ? data.draft !== true : true;
+});
+
+const entries = entries_unsorted.sort((a, b) => {
+  const endADateRaw = a.data.date;
+  const endADate = endADateRaw ? new Date(endADateRaw) : new Date(); // if blank, use now
+  const endBDateRaw = b.data.date;
+  const endBDate = endBDateRaw ? new Date(endBDateRaw) : new Date(); // if blank, use now
+  return endBDate - endADate;
+});
 ---
 <BaseLayout page_title={page_title} active_nav={active_nav}>
   <main>
@@ -20,7 +30,7 @@ const entries = await getCollection("updates");
             }
           </figure>
           <div class="card-body">
-            <p class="card-title text-3xl">{entry.data.title}</p>
+            <h2 class="card-title text-3xl">{entry.data.title}</h2>
             <p>{entry.data.description}</p>
           </div>
         </a>

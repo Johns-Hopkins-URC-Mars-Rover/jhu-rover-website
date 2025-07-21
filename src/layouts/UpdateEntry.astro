@@ -1,17 +1,19 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import FormattedDate from "../components/FormattedDate.astro";
+import BlogDate from "../components/BlogDate.astro";
 import Menu from '../components/Menu.astro'
 import EntryTitle from "../components/EntryTitle.astro";
 import BaseLayout from "./BaseLayout.astro";
+import { Image } from "astro:assets";
 
 const active_nav = "rover";
 type Props = CollectionEntry<"updates">["data"];
 
-const { title, thumbnail, location, date } = Astro.props;
+const { title, thumbnail, date, tags, draft } = Astro.props;
+const page_title = title + " | rover @ jhu"
 ---
 
-<BaseLayout page_title={title} active_nav={active_nav}>
+<BaseLayout page_title={page_title} active_nav={active_nav}>
   <div class="content">
     <!-- Menu -->
     <Menu back_href='/updates/'/>
@@ -20,7 +22,7 @@ const { title, thumbnail, location, date } = Astro.props;
       <article>
         <div class="hero-image">
           {thumbnail 
-            ? <img class='max-w-full w-auto max-h-50vh mx-auto' src={thumbnail.src} alt="" /> 
+            ? <Image class='max-w-full w-auto max-h-50vh mx-auto' src={thumbnail} alt="" /> 
             : <div class="skeleton max-w-full w-auto h-100 max-h-50vh mx-auto"></div>}
         </div>
         <div class="prose py-10 leading-8">
@@ -28,11 +30,15 @@ const { title, thumbnail, location, date } = Astro.props;
             <EntryTitle>
               {title}
             </EntryTitle>
-            <div class="flex flex-row gap-2 py-2">
-              {date && <div class="badge badge-info italic"><FormattedDate date={date} /></div>}
-              {location && <div class="badge badge-info italic">{location}</div>}
+            <div class="flex flex-row gap-2 py-2 flex-wrap">
+              <div class="badge badge-info date italic">
+                <BlogDate date={date} />
+              </div>
+              {tags && tags.map(tag => (
+              <div class="badge badge-primary italic">{tag}</div>
+              ))}
             </div>
-            <div class="divider divider-primary">
+            <div class="divider divider-secondary">
               <a class="indicator" href="#content">
                 <span class="animate-pulse indicator-item indicator-bottom indicator-center badge bg-accent text-lg">↓</span>
               </a>
@@ -41,7 +47,6 @@ const { title, thumbnail, location, date } = Astro.props;
           <div id="content">
             <slot />
           </div>
-        </div>
       </article>
     </main>
   </div>

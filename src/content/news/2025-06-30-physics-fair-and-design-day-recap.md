@@ -1,6 +1,6 @@
 ---
 title: JHU Physics Fair & Design Day
-thumbnail: ../../../public/assets/IMG_7493.jpg
+thumbnail: ../../../public/assets/physics_fair.jpg
 date: 2025-05-12
 description: The JHU Mars Rover Team showcased the engineering and physics
   behind our rover at the Physics Fair and Design Day through hands-on

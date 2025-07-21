@@ -1,16 +1,19 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import FormattedDate from '../components/FormattedDate.astro';
+import BlogDate from "../components/BlogDate.astro";
 import Menu from '../components/Menu.astro'
-import BaseLayout from './BaseLayout.astro';
+import EntryTitle from "../components/EntryTitle.astro";
+import BaseLayout from "./BaseLayout.astro";
+import { Image } from "astro:assets";
 
 const active_nav = "news";
 type Props = CollectionEntry<"news">["data"];
 
-const { title, thumbnail, description, date } = Astro.props;
+const { title, thumbnail, date, tags, draft } = Astro.props;
+const page_title = title + " | rover @ jhu"
 ---
 
-<BaseLayout page_title={title} active_nav={active_nav}>
+<BaseLayout page_title={page_title} active_nav={active_nav}>
   <div class="content">
     <!-- Menu -->
     <Menu back_href='/news/'/>
@@ -19,26 +22,31 @@ const { title, thumbnail, description, date } = Astro.props;
       <article>
         <div class="hero-image">
           {thumbnail 
-            ? <img src={thumbnail.src} class='max-w-full w-auto max-h-50vh mx-auto' alt="" /> 
+            ? <Image class='max-w-full w-auto max-h-50vh mx-auto' src={thumbnail} alt="" /> 
             : <div class="skeleton max-w-full w-auto h-100 max-h-50vh mx-auto"></div>}
         </div>
         <div class="prose py-10 leading-8">
           <div class="title">
-            <div class="date">
-              <FormattedDate date={date} />
-              {
-                date && (
-                  <div class="last-updated-on">
-                    Last updated on <FormattedDate date={date} />
-                  </div>
-                )
-              }
+            <EntryTitle>
+              {title}
+            </EntryTitle>
+            <div class="flex flex-row gap-2 py-2 flex-wrap">
+              <div class="badge badge-info date italic">
+                <BlogDate date={date} />
+              </div>
+              {tags && tags.map(tag => (
+              <div class="badge badge-primary italic">{tag}</div>
+              ))}
             </div>
-            <h1>{title}</h1>
-            <hr />
+            <div class="divider divider-secondary">
+              <a class="indicator" href="#content">
+                <span class="animate-pulse indicator-item indicator-bottom indicator-center badge bg-accent text-lg">↓</span>
+              </a>
+            </div>
           </div>
-          <slot />
-        </div>
+          <div id="content">
+            <slot />
+          </div>
       </article>
     </main>
   </div>
