@@ -5,11 +5,13 @@ import preact from '@astrojs/preact';
 
 import netlify from "@astrojs/netlify";
 
+import sitemap from "@astrojs/sitemap";
+
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-
-  integrations: [preact()],
+  site: 'https://jhurover.org',
+  integrations: [preact(), sitemap()],
   adapter: netlify(),
 });
