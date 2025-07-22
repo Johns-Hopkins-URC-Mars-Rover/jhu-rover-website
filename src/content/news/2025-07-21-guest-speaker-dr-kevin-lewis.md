@@ -9,7 +9,7 @@ description: "Guest Speaker Dr. Kevin Lewis spoke to the JHU Rover Team about
 tags:
   - Guest Speaker
   - Outreach
-draft: true
+draft: false
 ---
 This general body meeting, the rover team had the privilege of welcoming [Dr. Kevin Lewis](https://hub.jhu.edu/experts/profiles/kevin-lewis/) to give a talk on the science being done by the [Curiosity Mars Rover](https://science.nasa.gov/mission/msl-curiosity/) and the planned [VIPER Lunar Rover](https://science.nasa.gov/mission/viper/). Members were able to learn about how various high-level instruments work on the real rovers, along with how decisions are made about what the rovers are going to study.
 
