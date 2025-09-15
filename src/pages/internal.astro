@@ -1,0 +1,22 @@
+---
+const page_title = "internal | rover @ jhu";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import GeneralContent from "../layouts/GeneralContent.astro";
+// import { getEntry, render } from 'astro:content';
+// const entry = await getEntry('general', 'about');
+
+// if (!entry) {
+//    // Handle Error, for example:
+//   throw new Error('Could not find "about" content');
+// }
+// const { Content, headings, remarkPluginFrontmatter } = await render(entry);
+---
+<BaseLayout page_title={page_title}>
+	<GeneralContent>
+			<h1 class="underline decoration-primary py-5" style="text-align: center;">
+				internal
+			</h1>
+            <h2>9/20/25 Robotics & ROS2 Workshop</h2>
+            <p><a href="/files/ros2_humble_install.bash" download>ros2 humble install file</a></p>
+	</GeneralContent>
+</BaseLayout>
