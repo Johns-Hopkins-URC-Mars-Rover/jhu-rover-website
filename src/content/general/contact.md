@@ -7,7 +7,7 @@ Please feel free to reach out to us at [hopkinsmarsrover@gmail.com](mailto:hopki
 
 ### GBM
 
-Hackerman B17 every Saturday @ 1:00 PM.
+Hodson 311 every Saturday @ 1:00 PM.
 
 ### Subteam Meetings
 
