@@ -34,8 +34,8 @@ const { active_nav } = Astro.props;
           NAV_ELEMS.map((elem) => (
           <NavButton 
             href={LINKS.find(link => link.label === elem)?.path ?? '/'}
-            active={elem.toLowerCase() === active_nav}>
-            {elem}
+            active={elem.toUpperCase() === active_nav}>
+            {elem.toUpperCase()}
           </NavButton>
           ))
         }
@@ -53,7 +53,7 @@ const { active_nav } = Astro.props;
         <NavButton 
             href={LINKS.find(link => link.label === elem)?.path ?? '/'}
             active={elem.toUpperCase() === active_nav}>
-            {elem}
+            {elem.toUpperCase()}
           </NavButton>
         ))
       }
