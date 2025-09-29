@@ -34,15 +34,15 @@ const { active_nav } = Astro.props;
           NAV_ELEMS.map((elem) => (
           <NavButton 
             href={LINKS.find(link => link.label === elem)?.path ?? '/'}
-            active={elem.toLowerCase() === active_nav}>
-            {elem}
+            active={elem.toUpperCase() === active_nav}>
+            {elem.toUpperCase()}
           </NavButton>
           ))
         }
       </ul>
     </div>
     <a href='/' class="btn btn-ghost btn-secondary text-xl rounded-none h-20">
-      rover @ jhu
+      HOPKINAUTS
     </a>
   </div>
   <!-- Normal for larger screens -->
@@ -52,8 +52,8 @@ const { active_nav } = Astro.props;
         NAV_ELEMS.map((elem) => (
         <NavButton 
             href={LINKS.find(link => link.label === elem)?.path ?? '/'}
-            active={elem.toLowerCase() === active_nav}>
-            {elem}
+            active={elem.toUpperCase() === active_nav}>
+            {elem.toUpperCase()}
           </NavButton>
         ))
       }
