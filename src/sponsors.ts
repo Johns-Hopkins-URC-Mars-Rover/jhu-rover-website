@@ -1,26 +1,25 @@
 const perseverance = [
     { name: 'CubeMars', 
         img: '/assets/sponsors/cube_mars.jpg', 
-        url: 'https://google.com' },
-    { name: 'JHU Alumni Association', 
+        url: 'https://www.cubemars.com/' },
+    { name: 'JHU Alumni Association 2025', 
         img: '/assets/sponsors/jhu_alum.jpeg', 
-        url: 'https://amazon.com' },
+        url: 'https://alumni.jhu.edu/' },
     { name: 'Mouser Electronics', 
         img: '/assets/sponsors/mouser.png', 
-        url: 'https://linkedin.com' },
+        url: 'https://www.mouser.com/' },
+    { name: 'ThorLabs', 
+        img: '/assets/sponsors/thorlabs.png', 
+        url: 'https://www.thorlabs.com/' },
 ]
 
 const curiosity = [
-    { name: 'JHU Alumni Association', 
+    { name: 'JHU Alumni Association 2024', 
         img: '/assets/sponsors/jhu_alum.jpeg', 
-        url: 'https://amazon.com' },
+        url: 'https://alumni.jhu.edu/' },
 ]
 
-const spirit = [
-    { name: 'Mouser Electronics', 
-        img: '/assets/sponsors/mouser.png', 
-        url: 'https://linkedin.com' },
-]
+const spirit = []
 
 export const SPONSORS = [
     { type: 'perseverance', amount: '$1200+', sponsors: perseverance },
