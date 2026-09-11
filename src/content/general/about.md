@@ -1,11 +1,6 @@
 ---
 title: ABOUT PAGE
-date: 2025-06-27
+date: 2026-09-10
 ---
-<h1 style="text-align: center">Forging the next generation of engineers and scientists to tackle the hardest problems on<br>Earth, Mars, and beyond.</h1>
+Founded in 2023, Hopkins Rover is an interdisciplinary group dedicated to designing and building a competition-ready rover for the University Rover Challenge (URC), an international robotics competition held annually in Utah. Hopkins Rover is split into 4 sub-teams: Mechanical, Biochemical, Software, and Electrical. The team's multidisciplinary nature allows students to gain hands-on experience in a variety of fields while gaining real world engineering experience.
 
-The Johns Hopkins Rover Team is an interdisciplinary group dedicated to designing and building a competition-ready rover at the University Rover Challenge (URC).
-
-![](/assets/jhu.png)
-
-![](/assets/mrt_logo.png)
